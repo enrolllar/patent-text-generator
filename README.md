@@ -44,6 +44,7 @@
 - generated_text_1.txt — для GPT-4o-mini;
 - generated_text_2.txt — для Qwen2.5;
 - generated_text_3.txt — для DeepSeek.
+  
 ![image](https://github.com/user-attachments/assets/a42cd8c4-7f67-4b1d-8bfd-e07af5822eae)
 
 Визулизация устройства в графовом представлении сохраняется в output/.
