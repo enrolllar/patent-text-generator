@@ -1,0 +1,6 @@
+pydantic
+networkx
+graphviz
+g4f
+requests
+nest_asyncio
