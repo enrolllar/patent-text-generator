@@ -51,3 +51,5 @@
 Визулизация устройства в графовом представлении сохраняется в output/.
 
 ![image](https://github.com/user-attachments/assets/2a56f483-a218-465a-89af-4e7c985b18a9)
+
+![image](https://github.com/user-attachments/assets/41872f63-8754-46a2-95d7-0c8fdeef6165)
