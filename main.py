@@ -1,4 +1,4 @@
-#=============================================== 3 модели + визуализация графов + выбор в начале ==================================================================================
+#=============================================== Нейросетевой модуль генерации текста патентной заявки ==================================================================================
 # -*- coding: utf-8 -*-
 from __future__ import annotations
 from pydantic import BaseModel
@@ -129,7 +129,6 @@ def visualize_relations_gv(tokens: List[Token], relations: List[Relation], outpu
         "OTHER": "#eeeeee"
     }
 
-
     dot = graphviz.Digraph(format='png', engine='dot')
     for token in tokens:
         label = f"{token.text} ({token.entityLabel})"
@@ -227,7 +226,7 @@ def correct_text_with_deepseek(prompt: str):
 
 from sentence_transformers import SentenceTransformer, util
 
-# сравнение текстов
+# === СРАВНЕНИЕ ТЕКСТОВ ===
 similarity_model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
 
 def compare_texts(text1: str, text2: str) -> float:
