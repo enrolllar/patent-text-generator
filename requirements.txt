@@ -4,3 +4,5 @@ graphviz
 g4f
 requests
 nest_asyncio
+hf_xet
+sentence-transformers

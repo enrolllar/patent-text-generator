@@ -129,6 +129,7 @@ def visualize_relations_gv(tokens: List[Token], relations: List[Relation], outpu
         "OTHER": "#eeeeee"
     }
 
+
     dot = graphviz.Digraph(format='png', engine='dot')
     for token in tokens:
         label = f"{token.text} ({token.entityLabel})"
@@ -175,7 +176,7 @@ def correct_text_with_qwen(prompt: str):
                                           'юридически структурированный формат.'},
             {'role': 'user', 'content': prompt}
         ],
-        'temperature': 0.6,
+        'temperature': 0.7,
         'max_tokens': -1,
         'stream': False
     }
@@ -188,6 +189,7 @@ def correct_text_with_qwen(prompt: str):
         else:
             print(f"Ошибка запроса к LLM: {response.status_code}")
             return None
+
     except Exception as e:
         print("Ошибка подключения к Qwen:", e)
         return None
@@ -222,6 +224,17 @@ def correct_text_with_deepseek(prompt: str):
     except Exception as e:
         print("Ошибка подключения к DeepSeek:", e)
         return None
+
+from sentence_transformers import SentenceTransformer, util
+
+# сравнение текстов
+similarity_model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
+
+def compare_texts(text1: str, text2: str) -> float:
+    embedding_1 = similarity_model.encode(text1, convert_to_tensor=True)
+    embedding_2 = similarity_model.encode(text2, convert_to_tensor=True)
+    similarity = util.cos_sim(embedding_1, embedding_2).item()
+    return round(similarity * 100, 2)
 
 
 # === ================== ===
@@ -299,8 +312,9 @@ if __name__ == "__main__":
         full_text += f"Исходный текст:\n{original_text}\n\n"
         full_text += f"Сгенерированный текст на основе эвристических правил:\n{generated_text}\n\n"
         full_text += f"Текст, скорректированный нейросетью:\n{corrected_text}\n\n"
+        similarity = compare_texts(original_text, corrected_text)
+        print(f"Сходство между исходным и сгенерированным текстом: {similarity}%")
+        full_text += f"Сходство между исходным и сгенерированным текстом: {similarity}%\n\n"
 
     with open(f"output/{filename}", "w", encoding="utf-8") as out_file:
         out_file.write(full_text)
-
-
