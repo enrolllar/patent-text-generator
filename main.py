@@ -258,7 +258,7 @@ if __name__ == "__main__":
             if choice in ("1", "2", "3"):
                 break
 
-    file_path = r'C:\Users\nazar\PycharmProjects\DIPLOM\relations_train.json'
+    file_path = os.path.join(os.path.dirname(__file__), 'relations_train.json')
     with open(file_path, 'r', encoding='utf-8') as f:
         raw_data = json.load(f)
 
