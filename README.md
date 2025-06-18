@@ -41,6 +41,7 @@
 - для DeepSeek и Qwen - запустите модель в LM Studio и убедись, что сервер работает на http://localhost:1234/v1/chat/completions. (Подключение к ВПН необходимо отключить для корректной работы)
 ![image](https://github.com/user-attachments/assets/72c9d338-f365-4d93-aea2-3375c00421b9)
 3. Запустите программу: python main.py
+
 Программа предложит выбрать модель:
 
 ![image](https://github.com/user-attachments/assets/9e0b93fc-02bd-4feb-8899-258f8e9c4864)
